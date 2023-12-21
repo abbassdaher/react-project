@@ -1,0 +1,22 @@
+.deleteBTN{
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 40px;
+    color: white;
+    margin: 0;
+    padding: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    
+}
+.card{
+    position: relative;
+}
