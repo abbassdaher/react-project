@@ -14,8 +14,21 @@ function App() {
     { name: "Nadin Daher", address: "beirut-Lebanon", phone: "70782818" },
     { name: "elena Daher", address: "beirut", phone: "70123456" },
   ];
-  const deleteHandeler = (e,indx)=>{
-    console.log(e, indx)
+  /**
+   * The deleteHandler function removes an item from an array and updates the state.
+   * @param e - The 'e' parameter is an event object that represents the event that triggered the
+   * deleteHandler function. It can be used to access information about the event, such as the target
+   * element that triggered the event.
+   * @param indexOfDeletedItem - The `indexOfDeletedItem` parameter is the index of the item that needs
+   * to be deleted from the `state` array.
+   */
+  const deleteHandeler = (e,indexOfDeletedItem)=>{
+    var stateFiltered;
+    const listOfNames = state.filter((element,index)=>
+      index!==indexOfDeletedItem 
+    )
+    setState(listOfNames)
+    // console.log(e.target, indexOfDeletedItem)
   };
   return (
     <div className="container">
