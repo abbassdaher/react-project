@@ -1,4 +1,4 @@
-import React ,{useState} from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { Cards } from "../cards/Cards";
 
@@ -8,7 +8,7 @@ function App() {
     { name: "Houssen Daher", address: "beirut", phone: "70123456" },
     { name: "Mahdi Daher", address: "beirut", phone: "70111111" },
     { name: "Ali Daher", address: "beirut", phone: "702222" },
-  ])
+  ]);
   // const male = ;
   const female = [
     { name: "Nadin Daher", address: "beirut-Lebanon", phone: "70782818" },
@@ -22,17 +22,24 @@ function App() {
    * @param indexOfDeletedItem - The `indexOfDeletedItem` parameter is the index of the item that needs
    * to be deleted from the `state` array.
    */
-  const deleteHandeler = (e,indexOfDeletedItem)=>{
-    var stateFiltered;
-    const listOfNames = state.filter((element,index)=>
-      index!==indexOfDeletedItem 
-    )
-    setState(listOfNames)
-    // console.log(e.target, indexOfDeletedItem)
+  const deleteHandeler = (e, indexOfDeletedItem) => {
+    // const listOfNames = state.filter(
+    //   (element, index) => index !== indexOfDeletedItem
+    // );
+    // setState(listOfNames);
+    
+    /* The code `setState((prevState) => {
+      return prevState.filter((elelment, idx) => idx !== indexOfDeletedItem);
+    });` is using the `setState` function provided by the `useState` hook in React to update the
+    state of the component. */
+    setState((prevState) => {
+      return prevState.filter((elelment, idx) => idx !== indexOfDeletedItem);
+    });
   };
+
   return (
     <div className="container">
-      <Cards list={state} color="aqua" deleteHandeler ={deleteHandeler}/>
+      <Cards list={state} color="aqua" deleteHandeler={deleteHandeler} />
       <Cards list={female} color="pink" />
     </div>
   );
