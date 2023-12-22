@@ -2,6 +2,7 @@
     width: 50%;
     margin: auto;
     margin-top: 20px;
+    text-align: center;
 }
 .card{
     border: 1px solid gray;
@@ -11,4 +12,14 @@
     margin-bottom: 10px;
     
     
+}
+.toggleCardsBTN{
+    margin-bottom: 10px;
+    
+}
+.show{
+    display: block;
+}
+.hide{
+    display: none;
 }

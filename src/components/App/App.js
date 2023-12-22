@@ -3,6 +3,7 @@ import "./App.css";
 import { Cards } from "../cards/Cards";
 
 function App() {
+  const [toggleCard,setTogleCard] = useState(false)
   const [state, setState] = useState([
     { name: "Abbass Daher", address: "beirut-Lebanon", phone: "70782818" },
     { name: "Houssen Daher", address: "beirut", phone: "70123456" },
@@ -28,7 +29,8 @@ function App() {
     // );
     // setState(listOfNames);
     
-    /* The code `setState((prevState) => {
+    
+     /* The code `setState((prevState) => {
       return prevState.filter((elelment, idx) => idx !== indexOfDeletedItem);
     });` is using the `setState` function provided by the `useState` hook in React to update the
     state of the component. */
@@ -39,7 +41,11 @@ function App() {
 
   return (
     <div className="container">
-      <Cards list={state} color="aqua" deleteHandeler={deleteHandeler} />
+    <button className="toggleCardsBTN" onClick={setTogleCard}>{toggleCard ? "hide" : "show"}</button>
+    <div className={toggleCard ? "show" : "hide"}>
+    <Cards list={state} color="aqua" deleteHandeler={deleteHandeler} />
+    </div>
+      
       <Cards list={female} color="pink" />
     </div>
   );
