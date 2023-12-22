@@ -14,10 +14,12 @@ function App() {
     { name: "Nadin Daher", address: "beirut-Lebanon", phone: "70782818" },
     { name: "elena Daher", address: "beirut", phone: "70123456" },
   ];
-
+  const deleteHandeler = (e,indx)=>{
+    console.log(e, indx)
+  };
   return (
     <div className="container">
-      <Cards list={state} color="aqua" />
+      <Cards list={state} color="aqua" deleteHandeler ={deleteHandeler}/>
       <Cards list={female} color="pink" />
     </div>
   );
