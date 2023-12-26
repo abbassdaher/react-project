@@ -38,12 +38,20 @@ function App() {
       return prevState.filter((elelment, idx) => idx !== indexOfDeletedItem);
     });
   };
+  const toggleHandler = ()=>{
+    setTogleCard((prevState)=>{
+    return !prevState;
+  })
+
+    
+     
+  }
 
   return (
     <div className="container">
-    <button className="toggleCardsBTN" onClick={setTogleCard}>{toggleCard ? "hide" : "show"}</button>
+    <button className="toggleCardsBTN" onClick={toggleHandler}>{toggleCard ? "hide" : "show"}</button>
     <div className={toggleCard ? "show" : "hide"}>
-    <Cards list={state} color="aqua" deleteHandeler={deleteHandeler} />
+    <Cards list={state} color="aqua" deleteHandeler={deleteHandeler}  />
     </div>
       
       <Cards list={female} color="pink" />
