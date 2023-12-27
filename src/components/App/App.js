@@ -1,23 +1,61 @@
 import React, { useState, useRef } from "react";
 import "./App.css";
-import { Cards } from "../cards/Cards";
+import  Cards  from "../cards/Cards";
 import Filter from "../filter/Filter";
 
 function App() {
   const inputElement = useRef(null);
   const [toggleCard, setTogleCard] = useState(true);
   const [state, setState] = useState([
-    { name: "abbass daher", address: "beirut-Lebanon", phone: "70782818" },
-    { name: "houssen daher", address: "beirut", phone: "70123456" },
-    { name: "mahdi daher", address: "beirut", phone: "70111111" },
-    { name: "ali daher", address: "beirut", phone: "702222" },
+    {
+      id: 0,
+      name: "abbass daher",
+      address: "beirut-Lebanon",
+      phone: "70782818",
+      gender: "male",
+    },
+    {
+      id: 1,
+      name: "houssen daher",
+      address: "beirut",
+      phone: "70123456",
+      gender: "male",
+    },
+    {
+      id: 2,
+      name: "mahdi daher",
+      address: "beirut",
+      phone: "70111111",
+      gender: "male",
+    },
+    {
+      id: 3,
+      name: "ali daher",
+      address: "beirut",
+      phone: "702222",
+      gender: "male",
+    },
+    {
+      id: 4,
+      name: "Nadin Daher",
+      address: "beirut-Lebanon",
+      phone: "70782818",
+      gender: "female",
+    },
+    {
+      id: 5,
+      name: "elena Daher",
+      address: "beirut",
+      phone: "70123456",
+      gender: "female",
+    },
   ]);
-  const [filter, setFilter] = useState('')
+  const [filter, setFilter] = useState("");
   // const male = ;
-  const female = [
-    { name: "Nadin Daher", address: "beirut-Lebanon", phone: "70782818" },
-    { name: "elena Daher", address: "beirut", phone: "70123456" },
-  ];
+  // const female = [
+  //   { name: "Nadin Daher", address: "beirut-Lebanon", phone: "70782818", gender:"female" },
+  //   { name: "elena Daher", address: "beirut", phone: "70123456", gender:"female" },
+  // ];
   /**
    * The deleteHandler function removes an item from an array and updates the state.
    * @param e - The 'e' parameter is an event object that represents the event that triggered the
@@ -26,19 +64,26 @@ function App() {
    * @param indexOfDeletedItem - The `indexOfDeletedItem` parameter is the index of the item that needs
    * to be deleted from the `state` array.
    */
-  const deleteHandeler = (e, indexOfDeletedItem) => {
-    // const listOfNames = state.filter(
-    //   (element, index) => index !== indexOfDeletedItem
-    // );
-    // setState(listOfNames);
+  // const deleteHandeler = (e, indexOfDeletedItem) => {
+  //   // const listOfNames = state.filter(
+  //   //   (element, index) => index !== indexOfDeletedItem
+  //   // );
+  //   // setState(listOfNames);
 
-    /* The code `setState((prevState) => {
-      return prevState.filter((elelment, idx) => idx !== indexOfDeletedItem);
-    });` is using the `setState` function provided by the `useState` hook in React to update the
-    state of the component. */
+  //   /* The code `setState((prevState) => {
+  //     return prevState.filter((elelment, idx) => idx !== indexOfDeletedItem);
+  //   });` is using the `setState` function provided by the `useState` hook in React to update the
+  //   state of the component. */
+  //   setState((prevState) => {
+  //     return prevState.filter((elelment, idx) => idx !== indexOfDeletedItem);
+  //   });
+    
+  // };
+  const deleteHandeler = (indexOfDeletedItem) => {
     setState((prevState) => {
-      return prevState.filter((elelment, idx) => idx !== indexOfDeletedItem);
+      return prevState.filter((elelment) => elelment.id !== indexOfDeletedItem);
     });
+    
   };
   /**
    * The toggleHandler function toggles the value of the togleCard state variable.
@@ -53,20 +98,26 @@ function App() {
     console.log(inputElement.current.value);
   };
 
+  /**
+   * The function `filterName` sets a filter using the provided name.
+   * @param name - The `name` parameter is a variable that represents the name that will be used for
+   * filtering.
+   */
   const filterName = (name) => {
-  setFilter(name)
-  
-    // console.log(state.filter(() => state.name == name));
-    // console.log(state.filter(()=>state.indexOf(name)));
-    // console.log(state.filter(()=>state.indexOf(name)))
-    // state.map((e)=>{
-    //   if(e.indexOf(name))
+    setFilter(name);
   };
+  /**
+   * The function filters an array of objects based on a given filter value.
+   * @returns The function `namesHandler` returns a filtered array of objects from the `state` array
+   * based on the `filter` value. If the `filter` value is not empty, it filters the `state` array
+   * based on the `name` property of each object that includes the `filter` value. If the `filter`
+   * value is empty, it returns the original `state` array.
+   */
   const namesHandler = () => {
-    if(filter.length!=0){
-    return state.filter((e)=>e.name.includes(filter) );
-  }
-   return state  
+    if (filter.length != 0) {
+      return state.filter((e) => e.name.includes(filter));
+    }
+    return state;
   };
 
   return (
@@ -76,10 +127,8 @@ function App() {
       </button>
       <div className={toggleCard ? "show" : "hide"}>
         <Filter filterName={filterName} />
-        <Cards list={namesHandler()} color="aqua" deleteHandeler={deleteHandeler} />
+        <Cards list={namesHandler()} deleteHandeler={deleteHandeler} />
       </div>
-
-      <Cards list={female} color="pink" />
     </div>
   );
 }
