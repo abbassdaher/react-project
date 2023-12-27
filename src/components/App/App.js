@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./App.css";
 import { Cards } from "../cards/Cards";
+import Filter from "../filter/Filter";
 
 function App() {
-  const [toggleCard,setTogleCard] = useState(false)
+  const inputElement = useRef(null);
+  const [toggleCard, setTogleCard] = useState(true);
   const [state, setState] = useState([
-    { name: "Abbass Daher", address: "beirut-Lebanon", phone: "70782818" },
-    { name: "Houssen Daher", address: "beirut", phone: "70123456" },
-    { name: "Mahdi Daher", address: "beirut", phone: "70111111" },
-    { name: "Ali Daher", address: "beirut", phone: "702222" },
+    { name: "abbass daher", address: "beirut-Lebanon", phone: "70782818" },
+    { name: "houssen daher", address: "beirut", phone: "70123456" },
+    { name: "mahdi daher", address: "beirut", phone: "70111111" },
+    { name: "ali daher", address: "beirut", phone: "702222" },
   ]);
+  const [filter, setFilter] = useState('')
   // const male = ;
   const female = [
     { name: "Nadin Daher", address: "beirut-Lebanon", phone: "70782818" },
@@ -28,9 +31,8 @@ function App() {
     //   (element, index) => index !== indexOfDeletedItem
     // );
     // setState(listOfNames);
-    
-    
-     /* The code `setState((prevState) => {
+
+    /* The code `setState((prevState) => {
       return prevState.filter((elelment, idx) => idx !== indexOfDeletedItem);
     });` is using the `setState` function provided by the `useState` hook in React to update the
     state of the component. */
@@ -38,22 +40,45 @@ function App() {
       return prevState.filter((elelment, idx) => idx !== indexOfDeletedItem);
     });
   };
-  const toggleHandler = ()=>{
-    setTogleCard((prevState)=>{
-    return !prevState;
-  })
+  /**
+   * The toggleHandler function toggles the value of the togleCard state variable.
+   */
+  const toggleHandler = () => {
+    setTogleCard((prevState) => {
+      return !prevState;
+    });
+  };
+  const changeHandler = () => {
+    inputElement.current.focus();
+    console.log(inputElement.current.value);
+  };
 
-    
-     
+  const filterName = (name) => {
+  setFilter(name)
+  
+    // console.log(state.filter(() => state.name == name));
+    // console.log(state.filter(()=>state.indexOf(name)));
+    // console.log(state.filter(()=>state.indexOf(name)))
+    // state.map((e)=>{
+    //   if(e.indexOf(name))
+  };
+  const namesHandler = () => {
+    if(filter.length!=0){
+    return state.filter((e)=>e.name.includes(filter) );
   }
+   return state  
+  };
 
   return (
     <div className="container">
-    <button className="toggleCardsBTN" onClick={toggleHandler}>{toggleCard ? "hide" : "show"}</button>
-    <div className={toggleCard ? "show" : "hide"}>
-    <Cards list={state} color="aqua" deleteHandeler={deleteHandeler}  />
-    </div>
-      
+      <button className="toggleCardsBTN" onClick={toggleHandler}>
+        {toggleCard ? "hide" : "show"}
+      </button>
+      <div className={toggleCard ? "show" : "hide"}>
+        <Filter filterName={filterName} />
+        <Cards list={namesHandler()} color="aqua" deleteHandeler={deleteHandeler} />
+      </div>
+
       <Cards list={female} color="pink" />
     </div>
   );

@@ -20,3 +20,6 @@
 .card{
     position: relative;
 }
+.name{
+    text-transform: capitalize;
+}
