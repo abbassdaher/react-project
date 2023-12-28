@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import "./App.css";
-import  Cards  from "../cards/Cards";
+import  CardsList  from "../cardsList/CardsList";
 import Filter from "../filter/Filter";
 
 function App() {
@@ -127,7 +127,7 @@ function App() {
       </button>
       <div className={toggleCard ? "show" : "hide"}>
         <Filter filterName={filterName} />
-        <Cards list={namesHandler()} deleteHandeler={deleteHandeler} />
+        <CardsList list={namesHandler()} deleteHandeler={deleteHandeler} />
       </div>
     </div>
   );
