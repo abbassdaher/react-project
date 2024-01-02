@@ -1,7 +1,8 @@
 import React, { useState, useRef } from "react";
 import "./App.css";
-import  CardsList  from "../cardsList/CardsList";
+import CardsList from "../cardsList/CardsList";
 import Filter from "../filter/Filter";
+import Modal from "../Modal/Modal";
 
 function App() {
   const inputElement = useRef(null);
@@ -77,13 +78,12 @@ function App() {
   //   setState((prevState) => {
   //     return prevState.filter((elelment, idx) => idx !== indexOfDeletedItem);
   //   });
-    
+
   // };
   const deleteHandeler = (indexOfDeletedItem) => {
     setState((prevState) => {
       return prevState.filter((elelment) => elelment.id !== indexOfDeletedItem);
     });
-    
   };
   /**
    * The toggleHandler function toggles the value of the togleCard state variable.
@@ -129,6 +129,7 @@ function App() {
         <Filter filterName={filterName} />
         <CardsList list={namesHandler()} deleteHandeler={deleteHandeler} />
       </div>
+      <Modal />
     </div>
   );
 }
