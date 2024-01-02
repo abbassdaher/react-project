@@ -3,8 +3,9 @@ import { ReactDOM } from "react";
 import "./Modal.css";
 import { createPortal } from "react-dom";
 
-const Modal = () => {
+const Modal = ({show}) => {
   return (
+    show &&
     <Fragment>
       {createPortal(
         <fragment>

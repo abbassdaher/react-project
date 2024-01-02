@@ -5,6 +5,7 @@ import Filter from "../filter/Filter";
 import Modal from "../Modal/Modal";
 
 function App() {
+  const [showModal, setModal] = useState(false);
   const inputElement = useRef(null);
   const [toggleCard, setTogleCard] = useState(true);
   const [state, setState] = useState([
@@ -122,14 +123,20 @@ function App() {
 
   return (
     <div className="container">
-      <button className="toggleCardsBTN" onClick={toggleHandler}>
-        {toggleCard ? "hide" : "show"}
-      </button>
+      <div className="buttonContainer">
+        <button className="toggleCardsBTN" onClick={toggleHandler}>
+          {toggleCard ? "hide record" : "show record"}
+        </button>
+        <button className="createModalBTN" onClick={() => setModal(true)}>
+          new record
+        </button>
+      </div>
+
       <div className={toggleCard ? "show" : "hide"}>
         <Filter filterName={filterName} />
         <CardsList list={namesHandler()} deleteHandeler={deleteHandeler} />
       </div>
-      <Modal />
+      <Modal show={showModal} />
     </div>
   );
 }
