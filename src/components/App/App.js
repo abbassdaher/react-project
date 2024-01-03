@@ -136,7 +136,7 @@ function App() {
         <Filter filterName={filterName} />
         <CardsList list={namesHandler()} deleteHandeler={deleteHandeler} />
       </div>
-      <Modal show={showModal} />
+      <Modal show={showModal} close={()=>setModal(false)}/>
     </div>
   );
 }
