@@ -3,6 +3,7 @@ import "./App.css";
 import CardsList from "../cardsList/CardsList";
 import Filter from "../filter/Filter";
 import Modal from "../Modal/Modal";
+import Button from "../layout/button/Button";
 
 function App() {
   const [showModal, setModal] = useState(false);
@@ -115,7 +116,7 @@ function App() {
    * value is empty, it returns the original `state` array.
    */
   const namesHandler = () => {
-    if (filter.length != 0) {
+    if (filter.length !== 0) {
       return state.filter((e) => e.name.includes(filter));
     }
     return state;
@@ -124,19 +125,17 @@ function App() {
   return (
     <div className="container">
       <div className="buttonContainer">
-        <button className="toggleCardsBTN" onClick={toggleHandler}>
+        <Button onClick={toggleHandler}>
           {toggleCard ? "hide record" : "show record"}
-        </button>
-        <button className="createModalBTN" onClick={() => setModal(true)}>
-          new record
-        </button>
+        </Button>
+        <Button onClick={() => setModal(true)}>new record</Button>
       </div>
 
       <div className={toggleCard ? "show" : "hide"}>
         <Filter filterName={filterName} />
         <CardsList list={namesHandler()} deleteHandeler={deleteHandeler} />
       </div>
-      <Modal show={showModal} close={()=>setModal(false)}/>
+      <Modal show={showModal} close={() => setModal(false)} />
     </div>
   );
 }
