@@ -6,6 +6,7 @@ import Modal from "../Modal/Modal";
 import Button from "../layout/button/Button";
 
 function App() {
+  const [record, setRecord] = useState();
   const [showModal, setModal] = useState(false);
   const inputElement = useRef(null);
   const [toggleCard, setTogleCard] = useState(true);
@@ -120,6 +121,17 @@ function App() {
       return state.filter((e) => e.name.includes(filter));
     }
     return state;
+  };
+  const newRecordHandler = (name, address, phone, gender) => {
+    setRecord((prevState) => {
+      return {
+        name: name,
+        address: address,
+        phone: phone,
+        gender: gender,
+      };
+    });
+    console.log(record.name);
   };
 
   return (

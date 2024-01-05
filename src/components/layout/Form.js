@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 
 const Form = (props) => {
   return (
-    <form>{props.children}</form>
+    <form onSubmit={props.onSubmit}>{props.children}</form>
   )
 }
 const Controller = (props) => {

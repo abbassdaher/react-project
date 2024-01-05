@@ -9,7 +9,7 @@
   visibility: hidden;
   opacity: 0;
 }
-.backDrop-showing{
+.backDrop-showing {
   visibility: visible;
   opacity: 0.8;
   transition: 1s;
@@ -27,7 +27,7 @@
   visibility: hidden;
 }
 .overLay-showing {
-    visibility: visible;
-    opacity: 1;
-    transition: opacity 1s;
-  }
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 1s;
+}
