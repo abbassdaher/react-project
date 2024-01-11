@@ -5,8 +5,6 @@ import Form from "../layout/Form.js";
 import Button from "../layout/button/Button.js";
 import AddUser from "../AddUser/AddUser.js";
 
-
-
 // const newRecordHandler = (name, address, phone, gender) => {
 //     setRecord((prevState) => {
 //         return {
@@ -18,25 +16,22 @@ import AddUser from "../AddUser/AddUser.js";
 //     });
 // };
 
-const Modal = ({ show, close}) => {
-    //newRecord(
-    //document.getElementById("inputName").value
-    // document.getElementById("inputAddess"),
-    // document.getElementById("inputPhone"),
-    // document.getElementById("inputGender")
-    //);
+const Modal = ({ show, close, newRecordHandler }) => {
+  const getNewRecordHandler = (name, address, phone, gender) => {
+    return { name, address, phone, gender };
+  };
   return (
     <Fragment>
       {createPortal(
-        <fragment>
+        <Fragment>
           <div
             className={`backDrop ${show ? "backDrop-showing" : null}`}
             onClick={close}
           ></div>
           <div className={`overLay ${show ? "overLay-showing" : null}`}>
-            <AddUser/>
+            <AddUser newRecordHandler={newRecordHandler} />
           </div>
-        </fragment>,
+        </Fragment>,
         document.getElementById("modal")
       )}
     </Fragment>

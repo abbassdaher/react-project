@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Form from "../layout/Form.js";
 import Button from "../layout/button/Button.js";
 
-const AddUser = () => {
+const AddUser = ({ newRecordHandler }) => {
   //   const [input, setInput] = useState({
   //     name: "",
   //     address: "",
@@ -26,11 +26,16 @@ const AddUser = () => {
   const [address, setAdress] = useState("");
   const [phone, setphone] = useState("");
   const [gender, setgender] = useState("");
- 
+
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    // console.log(input);
-    console.log(name,address,phone,gender);
+    newRecordHandler({
+      id: 7,
+      name,
+      address,
+      phone,
+      gender,
+    })
   };
   return (
     <div>
@@ -48,7 +53,9 @@ const AddUser = () => {
                 placeholder="Name"
                 // value={input.name}
                 // onChange={inputHandler}
-                onChange={(e)=>{setName(e.target.value)}}
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
               />
             </div>
           </div>
@@ -63,7 +70,9 @@ const AddUser = () => {
                 id="address"
                 placeholder="beirut-lebanon"
                 // onChange={inputHandler}
-                onChange={(e)=>{setAdress(e.target.value)}}
+                onChange={(e) => {
+                  setAdress(e.target.value);
+                }}
               />
             </div>
           </div>
@@ -78,7 +87,9 @@ const AddUser = () => {
                 id="phone"
                 placeholder="03xxxxxx"
                 // onChange={inputHandler}
-                onChange={(e)=>{setphone(e.target.value)}}
+                onChange={(e) => {
+                  setphone(e.target.value);
+                }}
               />
             </div>
           </div>
@@ -93,7 +104,9 @@ const AddUser = () => {
                 id="gender"
                 placeholder="male/female"
                 // onChange={inputHandler}
-                onChange={(e)=>{setgender(e.target.value)}}
+                onChange={(e) => {
+                  setgender(e.target.value);
+                }}
               />
             </div>
           </div>

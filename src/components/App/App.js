@@ -4,6 +4,7 @@ import CardsList from "../cardsList/CardsList";
 import Filter from "../filter/Filter";
 import Modal from "../Modal/Modal";
 import Button from "../layout/button/Button";
+import AddUser from "../AddUser/AddUser";
 
 function App() {
   const [record, setRecord] = useState();
@@ -84,8 +85,8 @@ function App() {
 
   // };
   const deleteHandeler = (indexOfDeletedItem) => {
-    setState((prevState) => {
-      return prevState.filter((elelment) => elelment.id !== indexOfDeletedItem);
+    setState((preState) => {
+      return preState.filter((elelment) => elelment.id !== indexOfDeletedItem);
     });
   };
   /**
@@ -122,18 +123,9 @@ function App() {
     }
     return state;
   };
-  const newRecordHandler = (name, address, phone, gender) => {
-    setRecord((prevState) => {
-      return {
-        name: name,
-        address: address,
-        phone: phone,
-        gender: gender,
-      };
-    });
-    console.log(record.name);
+  const newRecordHandler = (data) => {
+        console.log(data);
   };
-
   return (
     <div className="container">
       <div className="buttonContainer">
@@ -145,9 +137,13 @@ function App() {
 
       <div className={toggleCard ? "show" : "hide"}>
         <Filter filterName={filterName} />
+        <Modal
+          show={showModal}
+          close={() => setModal(false)}
+          newRecordHandler={newRecordHandler}
+        ></Modal>
         <CardsList list={namesHandler()} deleteHandeler={deleteHandeler} />
       </div>
-      <Modal show={showModal} close={() => setModal(false)} />
     </div>
   );
 }
