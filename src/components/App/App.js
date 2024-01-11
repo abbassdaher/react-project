@@ -124,7 +124,7 @@ function App() {
     return state;
   };
   const newRecordHandler = (data) => {
-        console.log(data);
+    setState((preState) => [...preState, data]);
   };
   return (
     <div className="container">
@@ -141,6 +141,7 @@ function App() {
           show={showModal}
           close={() => setModal(false)}
           newRecordHandler={newRecordHandler}
+          length={state.length}
         ></Modal>
         <CardsList list={namesHandler()} deleteHandeler={deleteHandeler} />
       </div>

@@ -16,7 +16,7 @@ import AddUser from "../AddUser/AddUser.js";
 //     });
 // };
 
-const Modal = ({ show, close, newRecordHandler }) => {
+const Modal = ({ show, close, newRecordHandler,length }) => {
   const getNewRecordHandler = (name, address, phone, gender) => {
     return { name, address, phone, gender };
   };
@@ -29,7 +29,7 @@ const Modal = ({ show, close, newRecordHandler }) => {
             onClick={close}
           ></div>
           <div className={`overLay ${show ? "overLay-showing" : null}`}>
-            <AddUser newRecordHandler={newRecordHandler} />
+            <AddUser newRecordHandler={newRecordHandler} length={length}/>
           </div>
         </Fragment>,
         document.getElementById("modal")

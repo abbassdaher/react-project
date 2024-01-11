@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Form from "../layout/Form.js";
 import Button from "../layout/button/Button.js";
 
-const AddUser = ({ newRecordHandler }) => {
+const AddUser = ({ newRecordHandler,length }) => {
   //   const [input, setInput] = useState({
   //     name: "",
   //     address: "",
@@ -30,12 +30,13 @@ const AddUser = ({ newRecordHandler }) => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     newRecordHandler({
-      id: 7,
+      id: length + 1,
       name,
       address,
       phone,
       gender,
     })
+    
   };
   return (
     <div>
